@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ "$(id -u)" != "$(stat -c "%u" hello)" ]; then
+    echo "Error: you need to be the owner of the file hello to change its owner."
+    exit 1
+fi
+
+if [ "$(id -un)" != "guillaume" ]; then
+    echo "Error: you need to be the user guillaume to change the owner of the file hello."
+    exit 1
+fi
+
+sudo chown betty hello
