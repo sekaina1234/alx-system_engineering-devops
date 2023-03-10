@@ -1,2 +1,4 @@
 #!/bin/bash
-0 string SCHOOL School data
+0 string SCHOOL School dataa
+!:mime Schoola
+file -C -m school.magic
