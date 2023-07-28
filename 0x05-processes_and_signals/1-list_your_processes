@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # Display the header with column names
-echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+echo "USER       PID %CPU %MEM    VSZ   RSS TTY      
+STAT START   TIME COMMAND"
 
-# Use the 'ps' command to get the list of processes and display them with the desired format
-ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command | head -50
+# Use the 'ps' command to get the list of processes
+and display them with the desired format
+ps axo user,pid,%cpu,%mem,vsz,rss,tty,stat
+,start,time,command | head -50
