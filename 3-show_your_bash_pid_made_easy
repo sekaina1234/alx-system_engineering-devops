@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Use 'pgrep' command to find the PIDs of processes with name containing 'bash'
+pids=$(pgrep -f bash)
+
+# Loop through the PIDs and display them along with the process name
+for pid in $pids; do
+  process_name=$(ps -p "$pid" -o comm=)
+  echo "$pid $process_name"
+done
