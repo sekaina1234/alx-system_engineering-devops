@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Display the PID of the current script
+echo $$
+
+# Alternatively, you can use the following command instead of 'echo $$':
+# printf "%s\n" $$
+
+# Or you can use 'echo $$' directly without the shebang (#!/bin/bash) at the beginning of the script.
