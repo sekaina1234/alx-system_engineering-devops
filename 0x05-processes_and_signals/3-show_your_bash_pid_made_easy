@@ -1,6 +1,7 @@
 #!/bin/bash
-pids=$(pgrep -f bash)
-for pid in $pids; do
-process_name=$(ps -p "$pid" -o comm=)
-echo "$pid $process_name"
-done
+
+# Use 'ps' command to list processes and filter the lines containing the word 'bash'
+processes=$(ps -eo pid,comm | grep bash)
+
+# Display the PIDs and process names
+echo "$processes"
