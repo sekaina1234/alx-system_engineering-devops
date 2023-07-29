@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Function to handle SIGTERM signal
+function func() {
+  echo "I am invincible!!!"
+  exit 0
+}
+# Set up the trap for SIGTERM
+trap func SIGTERM
+# Infinite loop
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
