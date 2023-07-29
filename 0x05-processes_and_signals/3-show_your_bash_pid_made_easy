@@ -1,7 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Displays the PID, along with the process name, of processes whose name contain the word bash
+# Not allowed to use ps
 
-# Use 'ps' command to list processes and filter the lines containing the word 'bash'
-processes=$(ps -eo pid,comm | grep bash)
-
-# Display the PIDs and process names
-echo "$processes"
+pgrep -l bash
