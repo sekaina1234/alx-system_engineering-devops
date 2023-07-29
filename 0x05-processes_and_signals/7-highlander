@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-# Function to handle SIGTERM signal
-function func() {
-  echo "I am invincible!!!"
-  exit 0
-}
-# Set up the trap for SIGTERM
+# Displays To infinity and beyond indefinitely with a sleep 2 in between each iteration and I am invincible!!! when receiving a SIGTERM signal
+counter=1
 trap func SIGTERM
-# Infinite loop
-while true; do
-  echo "To infinity and beyond"
-  sleep 2
+function func() {
+	echo "I am invincible!!!"
+}
+while [ $counter -eq 1 ]; do
+	echo "To infinity and beyond"
+	sleep 2
 done
