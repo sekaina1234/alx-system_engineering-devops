@@ -1,0 +1,14 @@
+#!/bin/bash
+# shellcheck disable=SC2009
+
+# Use 'ps' command to list processes and filter the line containing the word 'bash'
+ps_output=$(ps -e | grep bash)
+
+# Display the filtered output
+echo "$ps_output"
+
+# Extract the PID from the filtered output using 'awk'
+bash_pid=$(echo "$ps_output" | awk '{print $1}')
+
+# Display the PID of the bash process
+echo "Here we can see that my Bash PID is $bash_pid."
