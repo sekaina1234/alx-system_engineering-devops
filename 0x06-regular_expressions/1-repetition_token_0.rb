@@ -1,8 +1,7 @@
 #!/usr/bin/env ruby
-def repetition_token_0(input_string)
-  pattern = /hbt{0}n/
-  matches = input_string.scan(pattern)
-  puts matches.join
+def find_and_print_pattern_occurrences(input_string)
+  occurrences = input_string.scan(/hbt{2,5}n/)
+  puts occurrences.join
 end
 input_argument = ARGV[0]
-repetition_token_0(input_argument)
+find_and_print_pattern_occurrences(input_argument)
