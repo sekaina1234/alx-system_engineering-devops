@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Script that displays all listening ports in the system and the PID and name
+# of the program to which each socket belongs.
+
+import subprocess
+
+def get_listening_ports():
+    try:
+        output = subprocess.check_output(['netstat', '-l', '-p']).decode()
+        return output
+    except subprocess.CalledProcessError as e:
+        print("Error executing netstat command:", e)
+        return ""
+
+if __name__ == "__main__":
+    listening_ports_output = get_listening_ports()
+    print(listening_ports_output)
