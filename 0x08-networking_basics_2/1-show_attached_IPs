@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-hostname -I
+#Display all active IPv4
+
+ifconfig | grep "inet addr" | awk '{print $2}' | cut -d':' -f2
