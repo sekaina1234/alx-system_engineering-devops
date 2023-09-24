@@ -1,0 +1,7 @@
+# ssh config file
+
+Host your_server_alias
+    HostName 3.85.142.30
+    User root
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
