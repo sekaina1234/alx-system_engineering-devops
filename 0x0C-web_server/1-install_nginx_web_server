@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Update the package list and install Nginx with the '-y' flag to avoid user prompts
+apt-get update
+apt-get install -y nginx
+
+# Create a custom Nginx configuration file to display "Hello World!"
+echo "server {
+    listen 80 default_server;
+    server_name _;
+    root /var/www/html;
+
+    location / {
+        echo 'Hello World!';
+        # Additional configuration if needed
+    }
+}" > /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the configuration
+service nginx restart
+
+# Exit with success status
+exit 0
