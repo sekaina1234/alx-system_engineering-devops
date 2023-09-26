@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
-# Install Nginx with the -y flag to automatically answer 'yes' to prompts
-sudo apt-get update
-sudo apt-get install -y nginx
+# Install Nginx with the -y flag
 
-# Ensure Nginx is listening on port 80
-sudo sed -i 's/80 default_server/80 default_server/' /etc/nginx/sites-available/default
-
-# Create a test HTML page with the string "Hello World!"
-echo "Hello World!" | sudo tee /var/www/html/index.html
-
-# Restart Nginx to apply changes
-sudo /etc/init.d/nginx restart
-
-# Exit the script with a success message
-exit 0
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw --force enable
+sudo ufw status
+systemctl status nginx
+echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
+sudo service nginx restart
