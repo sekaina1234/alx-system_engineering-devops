@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install Nginx with the -y flag
+# This script installs a nginx web server
 
 sudo apt update
 sudo apt install nginx -y
