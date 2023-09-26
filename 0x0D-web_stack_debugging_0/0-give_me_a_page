@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Start a Docker container based on the holbertonschool/265-0 image,
+# mapping port 8080 on the host to port 80 on the container
+docker run -p 8080:80 -d -it holbertonschool/265-0
+
+# Check the logs of the running container to identify any issues
+docker logs <container_id>
+
+# Access the container's shell
+docker exec -it <container_id> /bin/bash
+
+# Navigate to the Apache configuration directory
+cd /etc/apache2/sites-available/
+
+# List the available configuration files
+ls
+
+# Edit the default configuration file (e.g., 000-default.conf)
+nano 000-default.conf
+
+# Ensure that DocumentRoot is set to /var/www/html
+# Modify the configuration as needed
+
+# Save the changes and exit the text editor
+
+# Restart the Apache web server to apply the changes
+service apache2 restart
+
+# Exit the container's shell
+exit
+
+# Test the container by curling port 8080
+curl 0:8080
