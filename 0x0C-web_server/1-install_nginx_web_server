@@ -1,23 +1,17 @@
-import subprocess
+#!/bin/bash
 
-# Update package list and install nginx
-subprocess.run(['sudo', 'apt', 'update'])
-subprocess.run(['sudo', 'apt', 'install', 'nginx', '-y'])
+# Install Nginx with the -y flag to automatically answer 'yes' to prompts
+sudo apt-get update
+sudo apt-get install -y nginx
 
-# Allow incoming traffic on ports 22 and 80
-subprocess.run(['sudo', 'ufw', 'allow', '22'])
-subprocess.run(['sudo', 'ufw', 'allow', '80'])
+# Ensure Nginx is listening on port 80
+sudo sed -i 's/80 default_server/80 default_server/' /etc/nginx/sites-available/default
 
-# Enable the firewall and display its status
-subprocess.run(['sudo', 'ufw', '--force', 'enable'])
-subprocess.run(['sudo', 'ufw', 'status'])
+# Create a test HTML page with the string "Hello World!"
+echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Check the status of the nginx service
-subprocess.run(['systemctl', 'status', 'nginx'])
+# Restart Nginx to apply changes
+sudo /etc/init.d/nginx restart
 
-# Create a simple "Hello World!" HTML file
-with open('/var/www/html/index.nginx-debian.html', 'w') as index_file:
-    index_file.write('Hello World!')
-
-# Restart the nginx service
-subprocess.run(['sudo', 'service', 'nginx', 'restart'])
+# Exit the script with a success message
+exit 0
