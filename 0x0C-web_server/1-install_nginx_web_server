@@ -1,23 +1,23 @@
-#!/bin/bash
+import subprocess
 
-# Update the package list and install Nginx with the '-y' flag to avoid user prompts
-apt-get update
-apt-get install -y nginx
+# Update package list and install nginx
+subprocess.run(['sudo', 'apt', 'update'])
+subprocess.run(['sudo', 'apt', 'install', 'nginx', '-y'])
 
-# Create a custom Nginx configuration file to display "Hello World!"
-echo "server {
-    listen 80 default_server;
-    server_name _;
-    root /var/www/html;
+# Allow incoming traffic on ports 22 and 80
+subprocess.run(['sudo', 'ufw', 'allow', '22'])
+subprocess.run(['sudo', 'ufw', 'allow', '80'])
 
-    location / {
-        echo 'Hello World!';
-        # Additional configuration if needed
-    }
-}" > /etc/nginx/sites-available/default
+# Enable the firewall and display its status
+subprocess.run(['sudo', 'ufw', '--force', 'enable'])
+subprocess.run(['sudo', 'ufw', 'status'])
 
-# Restart Nginx to apply the configuration
-service nginx restart
+# Check the status of the nginx service
+subprocess.run(['systemctl', 'status', 'nginx'])
 
-# Exit with success status
-exit 0
+# Create a simple "Hello World!" HTML file
+with open('/var/www/html/index.nginx-debian.html', 'w') as index_file:
+    index_file.write('Hello World!')
+
+# Restart the nginx service
+subprocess.run(['sudo', 'service', 'nginx', 'restart'])
