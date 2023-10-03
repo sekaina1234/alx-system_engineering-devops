@@ -36,3 +36,4 @@ service { 'nginx':
   enable  => 'true',
   require => File['/etc/nginx/sites-enabled/custom_header'],
 }
+
