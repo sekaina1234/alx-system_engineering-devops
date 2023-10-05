@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 # Install Nginx if not installed and restart it
-[ -x "$(command -v nginx)" ] || (apt-get update -y && apt-get install -y nginx && service nginx restart)
-
-# Check Nginx's status
-service nginx status | grep -q "nginx is running" || echo "nginx is not running"
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+echo "" > /run/nginx.pid
